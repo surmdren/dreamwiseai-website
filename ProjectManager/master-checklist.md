@@ -8,7 +8,7 @@
 |-------|------|----------|----------|
 | Phase 1: PRD | [x] | 2026-03-18 | docs/specs/2026-03-17-website-redesign.md |
 | Phase 2: 架构图 | [x] | 2026-03-18 | Architecture/ |
-| Phase 3: 技术方案 | [ ] | - | TechSolution/ |
+| Phase 3: 技术方案 | [x] | 2026-03-18 | TechSolution/ |
 | Phase 4: 设计系统 | [ ] | - | Design/design-system.md |
 | Phase 5: 页面设计 | [ ] | - | Design/pages/ |
 | Phase 6: 开发规划 | [ ] | - | DevPlan/ |
@@ -41,7 +41,7 @@
 - [ ] 生成数据流图
 - [ ] 生成 API 架构图
 
-### [ ] Phase 3: 技术方案
+### [x] Phase 3: 技术方案
 - [ ] 执行 /tech-solution
 - [ ] 技术选型确定（前端/后端/数据库）
 - [ ] 项目结构定义

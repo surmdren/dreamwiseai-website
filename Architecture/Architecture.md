@@ -97,7 +97,9 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | 国际化 | next-intl | 双语支持，SSG 兼容 |
 | 邮件 | Resend | Route Handler 触发，SMTP 替代 |
 | 预约 | Calendly Widget | 嵌入 inline widget，无需后端 |
-| 部署 | Vercel | 零配置，CDN 全球分发 |
+| 容器化 | Docker (Next.js standalone) | 容器化部署 |
+| 编排 | Kubernetes (k3s) | 自托管轻量集群 |
+| Ingress | Nginx Ingress + cert-manager | TLS 终止 + Let's Encrypt |
 | SEO | Next.js Metadata API | 双语 meta + og:image |
 
 ---
@@ -209,11 +211,11 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 
 ## 关键架构决策记录
 
-### ADR-001：选择 Vercel 而非 K8s 部署
+### ADR-001：选择 K8s 自托管（k3s）而非 Vercel
 
-**决策**：使用 Vercel 部署，不使用 K8s。
-**理由**：官网是纯静态内容，无需容器编排。Vercel 零配置、CDN 全球分发、自动 HTTPS，运维成本接近零。
-**影响**：无法自托管，依赖 Vercel 平台可用性。
+**决策**：使用 k3s 自托管部署，不使用 Vercel。
+**理由**：数据完全自控，基础设施可扩展，月成本固定（$7-13/月），为后续产品上线（SaaS、API 服务）奠定基础，避免未来迁移成本。
+**影响**：需要管理服务器，运维复杂度略高于 Vercel；初期通过 k3s 降低 K8s 管理复杂度。
 
 ### ADR-002：选择 Resend 而非自建 SMTP
 
