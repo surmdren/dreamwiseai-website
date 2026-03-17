@@ -1,6 +1,6 @@
 # DreamWise AI 官网 — 产品需求文档
 
-**版本**：v1.3
+**版本**：v1.4
 **日期**：2026-03-17
 **状态**：待确认
 
@@ -129,7 +129,7 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | 性能 | 纯静态渲染，无外部 API 依赖 |
 | 动效 | 适度（scroll fade-in，无过度动画） |
 | 语言 | 英语（默认）+ 中文，自动检测浏览器语言 |
-| 表单 | 接入 Resend 或 Formspree，提交后邮件通知到指定邮箱 |
+| 表单 | 接入 Resend，Next.js Route Handler 发送邮件通知到指定邮箱 |
 | SEO | 双语 `<title>` + `<meta description>` + `og:image`，Next.js Metadata API 实现 |
 
 ---
