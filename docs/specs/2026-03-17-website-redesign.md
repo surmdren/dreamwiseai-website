@@ -1,6 +1,6 @@
 # DreamWise AI 官网 — 产品需求文档
 
-**版本**：v1.1
+**版本**：v1.2
 **日期**：2026-03-17
 **状态**：待确认
 
@@ -123,23 +123,7 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 
 ---
 
-## 6. 技术规格
-
-| 项目 | 规格 |
-|------|------|
-| 框架 | Next.js 14（App Router，现有项目） |
-| 样式 | Tailwind CSS |
-| 动效 | Framer Motion（已安装） |
-| 图标 | Lucide React（已安装） |
-| 字体 | Google Fonts（Sora + Inter） |
-| 国际化 | next-intl，`messages/en.json` + `messages/zh.json` |
-| 语言检测 | 自动读取 `Accept-Language` Header，中文（zh/zh-CN/zh-TW）→ 中文，其余 → 英文 |
-| 语言切换 | Navbar 右上角提供 EN / 中文 手动切换按钮（覆盖自动检测） |
-| 操作 | 清空现有 `components/` 所有组件，重写 `app/page.tsx` |
-
----
-
-## 7. 范围说明（Scope）
+## 6. 范围说明（Scope）
 
 **本次包含**：单页官网（Landing Page），所有 Section 均在一个页面内。
 
