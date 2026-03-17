@@ -1,6 +1,6 @@
 # DreamWise AI 官网 — 产品需求文档
 
-**版本**：v1.4
+**版本**：v1.5
 **日期**：2026-03-17
 **状态**：待确认
 
@@ -56,14 +56,19 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 - 双 CTA：**Book a Free Assessment**（主）+ **See Case Studies**（次）
 - 背景：抽象 Agent/网络节点视觉元素（CSS/SVG 实现，无需外部图片）
 
-### 4.3 Problem Section
+### 4.3 Trust Logos Section
+- 一行 "Trusted by" 合作伙伴/客户 logo
+- 放在 Hero 下方，3-5 个 logo（占位，后续替换真实 logo）
+- 灰色调 logo，hover 显示原色
+
+### 4.4 Problem Section
 - 标题：*"Why Most SMEs Struggle with AI Adoption"*
 - 3 个痛点卡片：
   1. **No Clear Starting Point** — AI feels overwhelming without a roadmap
   2. **Generic Solutions Don't Fit** — Off-the-shelf tools miss your specific workflows
   3. **No One to Own It** — AI projects stall without dedicated expertise
 
-### 4.4 Services Section
+### 4.5 Services Section
 - 标题：*"What We Do"*
 - 3 个服务卡片：
 
@@ -73,14 +78,14 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | Custom Agent Development | *Built for your business* | We design and deploy AI agents tailored to your workflows — from customer service to internal operations. |
 | Agent Operations & Optimization | *Keep improving* | Ongoing monitoring, fine-tuning, and iteration to ensure your agents deliver measurable business results. |
 
-### 4.5 How It Works Section
+### 4.6 How It Works Section
 - 标题：*"From Zero to Agent-Driven in 3 Steps"*
 - 3 步流程：
   1. **Assess** — We map your current processes and identify where agents create the most value
   2. **Build** — We develop and integrate custom agents into your existing systems
   3. **Operate** — We monitor performance and continuously improve outcomes
 
-### 4.6 Case Studies Section
+### 4.7 Case Studies Section
 - 标题：*"Real Results for Real Businesses"*
 - 3 个案例卡片（占位内容，结构真实）：
 
@@ -90,31 +95,32 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | Logistics | Order tracking & ops agent | 40% faster response time |
 | Professional Services | Internal knowledge agent | 3x faster onboarding |
 
-### 4.7 Stats Section
+### 4.8 Stats Section
 - 4 个关键数字：
   - **50+** SMEs Transformed
   - **10,000+** Hours Automated
   - **3.2x** Average ROI
   - **< 8 weeks** Average Time to Deploy
 
-### 4.8 CTA Section
+### 4.9 CTA Section
 - 标题：*"Ready to Become Agent-Driven?"*
 - 副标题：*Start with a free 30-minute assessment call.*
-- 表单字段：Full Name / Company / Email / （可选）What's your biggest challenge?
-- 提交按钮：**Book My Free Assessment**
-- 提交后显示成功提示（前端状态，无需后端）
+- 双入口：
+  - **Calendly 嵌入**：直接选择时间预约（主），嵌入 Calendly inline widget
+  - **表单留资**：Full Name / Company / Email /（可选）What's your biggest challenge?（备选）
+- Resend 邮件通知留资表单提交
 
-### 4.9 Testimonials Section
+### 4.10 Testimonials Section
 - 标题：*"What Our Clients Say"*
 - 2-3 个客户证言卡片，每张包含：引用内容、客户姓名、职位、公司名
 - 占位内容（真实客户入驻后替换）
 
-### 4.10 About Section
+### 4.11 About Section
 - 标题：*"Why DreamWise AI"*
 - 内容：团队背景、创立原因、核心理念
 - 与 Navbar About 链接锚点对应
 
-### 4.11 Footer
+### 4.12 Footer
 - Logo + slogan
 - 导航链接（同 Navbar）
 - 版权：© 2026 DreamWise AI. All rights reserved.
