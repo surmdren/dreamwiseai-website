@@ -46,7 +46,7 @@ EOF
 1. **目标环境**：testing（本地 K8s）还是 production（AWS/阿里云）？
 2. **数据库模式**：Supabase 托管 还是 K8s 自托管 PostgreSQL？
 
-> 判断依据：若 TechSolution 中提到 Supabase 或使用 Vercel + Next.js，推荐 Supabase 模式。
+> 判断依据：若 TechSolution 中提到 Supabase，推荐 Supabase 模式；否则使用 K8s 自托管 PostgreSQL。
 
 ---
 
@@ -158,7 +158,6 @@ helm install redis bitnami/redis \
 # 连接: localhost:30379
 ```
 
-**Vercel 项目**：使用 [Upstash Redis](https://upstash.com)（Serverless，按请求计费），获取 `UPSTASH_REDIS_REST_URL` 和 `UPSTASH_REDIS_REST_TOKEN`。
 
 ---
 
@@ -206,7 +205,7 @@ bash infrastructure/scripts/init.sh
 **Supabase 模式**：
 - [ ] Supabase Schema 已创建并配置 Extra Search Path
 - [ ] 跳过 PostgreSQL Helm 安装
-- [ ] Upstash Redis 已配置（Vercel 项目）
+- [ ] Redis Helm 已配置（K8s 模式）或 Supabase 无需 Redis
 
 **K8s 自托管模式**：
 - [ ] 每个 Namespace 已创建 ResourceQuota + LimitRange

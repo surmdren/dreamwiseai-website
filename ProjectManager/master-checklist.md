@@ -11,8 +11,8 @@
 | Phase 3: 技术方案 | [x] | 2026-03-18 | TechSolution/ |
 | Phase 4: 设计系统 | [x] | 2026-03-18 | Design/design-system.md |
 | Phase 5: 页面设计 | [x] | 2026-03-18 | Design/pages/ |
-| Phase 6: 开发规划 | [ ] | - | DevPlan/ |
-| Phase 7: 基础设施 | [ ] | - | infrastructure/ |
+| Phase 6: 开发规划 | [x] | 2026-03-18 | DevPlan/ |
+| Phase 7: 基础设施 | [SKIP] | 2026-03-18 | 无数据库，K8s 配置在模块 13 |
 | Phase 8a: 开发实现(dev-executor) | [ ] | - | src/ + DevPlan/reports/ |
 | Phase 8b: 自动巡检(dev-autopilot) | [ ] | - | DevPlan/autopilot.log |
 | Phase 8c: UTM 注入 | [ ] | - | lib/utm.ts + lib/analytics.ts |
@@ -63,7 +63,7 @@
 - [ ] 包含 UX Pilot 提示词
 - [ ] 输出到 Design/pages/
 
-### [ ] Phase 6: 开发规划
+### [x] Phase 6: 开发规划
 - [ ] 执行 /dev-planner
 - [ ] 生成 DevPlan/checklist.md
 - [ ] 每个模块有独立 md 文档
