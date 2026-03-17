@@ -9,7 +9,7 @@
 | Phase 1: PRD | [x] | 2026-03-18 | docs/specs/2026-03-17-website-redesign.md |
 | Phase 2: 架构图 | [x] | 2026-03-18 | Architecture/ |
 | Phase 3: 技术方案 | [x] | 2026-03-18 | TechSolution/ |
-| Phase 4: 设计系统 | [ ] | - | Design/design-system.md |
+| Phase 4: 设计系统 | [x] | 2026-03-18 | Design/design-system.md |
 | Phase 5: 页面设计 | [ ] | - | Design/pages/ |
 | Phase 6: 开发规划 | [ ] | - | DevPlan/ |
 | Phase 7: 基础设施 | [ ] | - | infrastructure/ |
@@ -49,7 +49,7 @@
 - [ ] 部署方案
 - [ ] 成本估算
 
-### [ ] Phase 4: 设计系统（Step 1）
+### [x] Phase 4: 设计系统（Step 1）
 - [ ] 执行 /ui-ux-pro-max（设计系统规范模式）
 - [ ] 色彩体系定义（Deep Indigo #1E3A8A 为主色）
 - [ ] 字体方案（Sora + Inter）
