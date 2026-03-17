@@ -10,7 +10,7 @@
 | Phase 2: 架构图 | [x] | 2026-03-18 | Architecture/ |
 | Phase 3: 技术方案 | [x] | 2026-03-18 | TechSolution/ |
 | Phase 4: 设计系统 | [x] | 2026-03-18 | Design/design-system.md |
-| Phase 5: 页面设计 | [ ] | - | Design/pages/ |
+| Phase 5: 页面设计 | [x] | 2026-03-18 | Design/pages/ |
 | Phase 6: 开发规划 | [ ] | - | DevPlan/ |
 | Phase 7: 基础设施 | [ ] | - | infrastructure/ |
 | Phase 8a: 开发实现(dev-executor) | [ ] | - | src/ + DevPlan/reports/ |
@@ -57,7 +57,7 @@
 - [ ] 间距/圆角/阴影规范
 - [ ] 输出 Design/design-system.md
 
-### [ ] Phase 5: 页面设计（Step 2）
+### [x] Phase 5: 页面设计（Step 2）
 - [ ] 执行 /uiux-design（基于设计系统）
 - [ ] 12个区块各有设计规格
 - [ ] 包含 UX Pilot 提示词
