@@ -1,6 +1,6 @@
 # DreamWise AI 官网 — 产品需求文档
 
-**版本**：v1.2
+**版本**：v1.3
 **日期**：2026-03-17
 **状态**：待确认
 
@@ -104,7 +104,17 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 - 提交按钮：**Book My Free Assessment**
 - 提交后显示成功提示（前端状态，无需后端）
 
-### 4.9 Footer
+### 4.9 Testimonials Section
+- 标题：*"What Our Clients Say"*
+- 2-3 个客户证言卡片，每张包含：引用内容、客户姓名、职位、公司名
+- 占位内容（真实客户入驻后替换）
+
+### 4.10 About Section
+- 标题：*"Why DreamWise AI"*
+- 内容：团队背景、创立原因、核心理念
+- 与 Navbar About 链接锚点对应
+
+### 4.11 Footer
 - Logo + slogan
 - 导航链接（同 Navbar）
 - 版权：© 2026 DreamWise AI. All rights reserved.
@@ -119,7 +129,8 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | 性能 | 纯静态渲染，无外部 API 依赖 |
 | 动效 | 适度（scroll fade-in，无过度动画） |
 | 语言 | 英语（默认）+ 中文，自动检测浏览器语言 |
-| 表单 | 纯前端状态，不需要后端接口 |
+| 表单 | 接入 Resend 或 Formspree，提交后邮件通知到指定邮箱 |
+| SEO | 双语 `<title>` + `<meta description>` + `og:image`，Next.js Metadata API 实现 |
 
 ---
 
@@ -129,6 +140,5 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 
 **本次不包含**：
 - 后端 / 数据库
-- 真实表单提交（无邮件通知）
 - 博客 / 多页面
 - CMS
