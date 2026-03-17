@@ -1,0 +1,41 @@
+graph TB
+    subgraph 访客旅程["访客转化旅程"]
+        V[访客到达官网]
+        V --> A
+        A --> B
+        B --> C
+    end
+
+    subgraph A["信任建立域"]
+        A1[Trust Logos<br/>合作伙伴标识]
+        A2[Case Studies<br/>真实案例]
+        A3[Testimonials<br/>客户证言]
+        A4[Stats<br/>关键数字]
+    end
+
+    subgraph B["价值主张域"]
+        B1[Problem Section<br/>痛点共鸣]
+        B2[Services<br/>服务展示]
+        B3[How It Works<br/>三步流程]
+        B4[About<br/>公司背景]
+    end
+
+    subgraph C["转化域（双入口）"]
+        C1[Calendly Widget<br/>直接预约时间]
+        C2[留资表单<br/>留下联系方式]
+        C3[Navbar CTA<br/>Book a Free Call]
+    end
+
+    subgraph D["后续跟进（人工）"]
+        D1[邮件通知<br/>consulting@dreamwiseai.com]
+        D2[Calendly 日历<br/>预约确认]
+    end
+
+    C1 --> D2
+    C2 --> D1
+    C3 --> C1
+
+    style A fill:#EEF2FF,stroke:#1E3A8A
+    style B fill:#F0F9FF,stroke:#3B82F6
+    style C fill:#F0FDF4,stroke:#22C55E
+    style D fill:#FFF7ED,stroke:#F59E0B

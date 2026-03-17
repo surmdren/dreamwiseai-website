@@ -1,0 +1,34 @@
+graph LR
+    subgraph Internal["内部 API (Next.js Route Handler)"]
+        Contact["/api/contact\nPOST\n表单留资邮件发送"]
+    end
+
+    subgraph External["外部 API 调用"]
+        ResendAPI["Resend API\napi.resend.com/emails\n发送邮件通知"]
+    end
+
+    subgraph EmbeddedWidget["嵌入式第三方 Widget"]
+        CalendlyWidget["Calendly Inline Widget\nassets.calendly.com\n预约日历（前端直接嵌入）"]
+    end
+
+    subgraph Consumer["调用方"]
+        CTAForm["CTA 留资表单\n(前端 fetch)"]
+        CTACalendly["CTA 预约按钮\n(直接渲染 Widget)"]
+        NavbarCTA["Navbar Book a Call\n(锚点跳转)"]
+    end
+
+    CTAForm -->|POST JSON| Contact
+    Contact -->|Resend SDK| ResendAPI
+    CTACalendly -->|渲染嵌入| CalendlyWidget
+    NavbarCTA -->|滚动到| CTAForm
+
+    subgraph Auth["认证方式"]
+        ResendKey["RESEND_API_KEY\n(Vercel 环境变量)"]
+    end
+
+    Contact --> ResendKey
+
+    style Internal fill:#EEF2FF,stroke:#1E3A8A,stroke-width:2px
+    style External fill:#F0F9FF,stroke:#3B82F6
+    style EmbeddedWidget fill:#F0FDF4,stroke:#22C55E
+    style Auth fill:#FFF7ED,stroke:#F59E0B

@@ -1,0 +1,30 @@
+graph LR
+    subgraph FE["前端系统 (Next.js on Vercel)"]
+        Pages[静态页面<br/>SSG 构建产物]
+        API[API Routes<br/>/api/contact]
+        I18n[i18n 中间件<br/>next-intl]
+        Components[React 组件<br/>12 个 Section]
+    end
+
+    subgraph ThirdParty["第三方系统"]
+        ResendSvc[Resend<br/>邮件服务]
+        CalendlySvc[Calendly<br/>预约服务]
+    end
+
+    subgraph Owner["站点所有者"]
+        Inbox[邮件收件箱]
+        Calendar[预约日历]
+    end
+
+    User((访客)) -->|HTTP/HTTPS| I18n
+    I18n -->|语言路由| Pages
+    Pages --> Components
+    User -->|提交表单| API
+    API -->|调用 SDK| ResendSvc
+    ResendSvc -->|发送通知| Inbox
+    User -->|嵌入交互| CalendlySvc
+    CalendlySvc -->|预约确认| Calendar
+
+    style FE fill:#EEF2FF,stroke:#1E3A8A,stroke-width:2px
+    style ThirdParty fill:#F0F9FF,stroke:#3B82F6,stroke-width:2px
+    style Owner fill:#F0FDF4,stroke:#22C55E,stroke-width:2px

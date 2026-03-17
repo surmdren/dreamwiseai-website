@@ -1,0 +1,73 @@
+graph TD
+    subgraph App["app/ (Next.js App Router)"]
+        Layout[layout.tsx<br/>根布局 + Metadata + i18n Provider]
+        Page[page.tsx<br/>页面组合]
+        ContactAPI[api/contact/route.ts<br/>Resend Route Handler]
+    end
+
+    subgraph Sections["components/sections/"]
+        Navbar
+        Hero
+        TrustLogos
+        Problem
+        Services
+        HowItWorks
+        CaseStudies
+        Stats
+        CTA
+        Testimonials
+        About
+        Footer
+    end
+
+    subgraph Shared["components/ui/ (共享组件)"]
+        Button[Button]
+        Card[Card]
+        Badge[Badge]
+        AnimatedSection[AnimatedSection<br/>Framer Motion 封装]
+    end
+
+    subgraph Lib["lib/ (工具层)"]
+        I18nLib[i18n.ts<br/>语言工具函数]
+        ResendLib[resend.ts<br/>邮件客户端]
+    end
+
+    subgraph Messages["messages/ (翻译文件)"]
+        EN[en.json]
+        ZH[zh.json]
+    end
+
+    Layout --> Page
+    Page --> Navbar
+    Page --> Hero
+    Page --> TrustLogos
+    Page --> Problem
+    Page --> Services
+    Page --> HowItWorks
+    Page --> CaseStudies
+    Page --> Stats
+    Page --> CTA
+    Page --> Testimonials
+    Page --> About
+    Page --> Footer
+
+    Hero --> Button
+    Hero --> AnimatedSection
+    CTA --> Button
+    CTA --> Card
+    Services --> Card
+    Services --> Badge
+    CaseStudies --> Card
+    Testimonials --> Card
+    Problem --> Card
+
+    ContactAPI --> ResendLib
+    Layout --> I18nLib
+    I18nLib --> EN
+    I18nLib --> ZH
+
+    style App fill:#EEF2FF,stroke:#1E3A8A
+    style Sections fill:#F0F9FF,stroke:#3B82F6
+    style Shared fill:#FFF7ED,stroke:#F59E0B
+    style Lib fill:#F0FDF4,stroke:#22C55E
+    style Messages fill:#FDF4FF,stroke:#A855F7

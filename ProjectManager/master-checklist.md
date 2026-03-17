@@ -7,7 +7,7 @@
 | Phase | 状态 | 完成时间 | 输出产物 |
 |-------|------|----------|----------|
 | Phase 1: PRD | [x] | 2026-03-18 | docs/specs/2026-03-17-website-redesign.md |
-| Phase 2: 架构图 | [ ] | - | Architecture/ |
+| Phase 2: 架构图 | [x] | 2026-03-18 | Architecture/ |
 | Phase 3: 技术方案 | [ ] | - | TechSolution/ |
 | Phase 4: 设计系统 | [ ] | - | Design/design-system.md |
 | Phase 5: 页面设计 | [ ] | - | Design/pages/ |
@@ -32,7 +32,7 @@
 - [x] 生成 docs/specs/2026-03-17-website-redesign.md（v1.5）
 - [x] 包含：品牌规格、12个区块内容、非功能性需求、范围说明
 
-### [ ] Phase 2: 架构设计
+### [x] Phase 2: 架构设计
 - [ ] 执行 /tech-architecture
 - [ ] 生成业务架构图
 - [ ] 生成技术架构图

@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant U as 访客 (Browser)
+    participant MW as next-intl Middleware
+    participant P as Next.js Page (SSG)
+    participant F as 留资表单 (CTA Section)
+    participant API as /api/contact (Route Handler)
+    participant R as Resend API
+    participant E as consulting@dreamwiseai.com
+    participant C as Calendly Widget
+
+    Note over U,E: 场景一：语言检测 + 页面加载
+    U->>MW: GET / (Accept-Language: zh-CN)
+    MW->>MW: 检测语言 → zh
+    MW->>P: 路由到 /zh
+    P->>U: 返回中文静态页面 (HTML+CSS+JS)
+    U->>U: React Hydration
+
+    Note over U,E: 场景二：留资表单提交
+    U->>F: 填写 Name / Company / Email / Challenge
+    F->>F: 前端验证（必填项检查）
+    F->>API: POST /api/contact { name, company, email, challenge }
+    API->>API: 服务端验证
+    API->>R: resend.emails.send({ to, from, subject, html })
+    R->>E: 邮件通知（新线索）
+    R->>API: { id: "msg_xxx" } 成功响应
+    API->>F: 200 OK
+    F->>U: 显示成功提示
+
+    Note over U,C: 场景三：Calendly 预约
+    U->>C: 点击预约按钮 → Calendly Widget 展开
+    C->>U: 加载可用时间段
+    U->>C: 选择时间 + 填写信息
+    C->>U: 预约确认（Calendly 独立处理邮件）

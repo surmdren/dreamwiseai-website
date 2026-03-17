@@ -1,0 +1,37 @@
+graph TB
+    subgraph Client["客户端 (Browser)"]
+        Browser[用户浏览器<br/>React Hydration]
+    end
+
+    subgraph Vercel["Vercel Platform"]
+        CDN[Vercel CDN<br/>全球边缘节点<br/>静态资源分发]
+        SSG[SSG 静态页面<br/>Next.js 14<br/>App Router]
+        RouteHandler[Route Handler<br/>app/api/contact<br/>Serverless Function]
+        NextIntl[next-intl<br/>i18n 中间件<br/>语言路由]
+    end
+
+    subgraph External["外部服务"]
+        Resend[Resend API<br/>邮件发送服务]
+        Calendly[Calendly<br/>预约 Widget]
+        GoogleFonts[Google Fonts<br/>Sora + Inter]
+    end
+
+    subgraph Destination["通知目的地"]
+        Email[consulting@dreamwiseai.com<br/>邮件收件箱]
+        CalendarApp[Rick 日历<br/>预约确认]
+    end
+
+    Browser -->|HTTPS 请求| CDN
+    CDN --> SSG
+    SSG --> NextIntl
+    NextIntl -->|渲染中/英文页面| Browser
+    Browser -->|POST /api/contact| RouteHandler
+    RouteHandler -->|Resend SDK| Resend
+    Resend -->|邮件通知| Email
+    Browser -->|嵌入 Widget| Calendly
+    Calendly -->|预约确认| CalendarApp
+    Browser -->|字体加载| GoogleFonts
+
+    style Vercel fill:#EEF2FF,stroke:#1E3A8A
+    style External fill:#F0F9FF,stroke:#3B82F6
+    style Destination fill:#F0FDF4,stroke:#22C55E
