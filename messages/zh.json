@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "DreamWise AI — 专注中小企业的 AI 智能体咨询",
+    "description": "我们帮助中小企业实现 AI 智能体驱动转型。提供 AI 就绪评估、定制智能体开发和持续运营优化服务。",
+    "keywords": "AI智能体咨询, AI转型, 中小企业AI, 业务自动化, 人工智能"
+  },
+  "navbar": {
+    "logo": "DreamWise AI",
+    "services": "服务",
+    "howItWorks": "工作方式",
+    "caseStudies": "案例",
+    "about": "关于我们",
+    "bookCall": "预约免费咨询",
+    "langToggle": "EN"
+  },
+  "hero": {
+    "badge": "AI 智能体咨询",
+    "title": "用 AI 智能体，驱动您的业务增长。",
+    "slogan": "未来由智能体驱动。我们助您率先到达。",
+    "ctaPrimary": "预约免费评估",
+    "ctaSecondary": "查看案例"
+  },
+  "trustLogos": {
+    "label": "深受创新企业信赖"
+  },
+  "problem": {
+    "headline": "为什么大多数中小企业在 AI 转型中举步维艰",
+    "subtext": "你并不孤单。以下是我们每天听到的三大障碍。",
+    "card1Title": "不知从何开始",
+    "card1Desc": "没有路线图，AI 转型令人望而生畏。大多数公司不知道从哪里起步。",
+    "card2Title": "通用方案无法适配",
+    "card2Desc": "现成的 AI 工具无法匹配您的业务流程，往往制造更多问题。",
+    "card3Title": "缺乏专属责任人",
+    "card3Desc": "没有专属专家，AI 项目很快陷入停滞。您的团队已经很忙——谁来推进？"
+  },
+  "services": {
+    "headline": "我们的服务",
+    "subtext": "三项服务，一条从 AI 入门到全面落地的完整路径。",
+    "s1Badge": "第一步",
+    "s1Name": "AI 就绪评估",
+    "s1Tagline": "找准起点",
+    "s1Desc": "我们审计您的业务流程，识别高价值自动化机会，交付清晰的 AI 路线图。",
+    "s2Badge": "第二步",
+    "s2Name": "定制 AI 智能体开发",
+    "s2Tagline": "专为您的业务打造",
+    "s2Desc": "我们设计并部署专为您工作流程定制的 AI 智能体——从客户服务到内部运营。",
+    "s3Badge": "第三步",
+    "s3Name": "智能体运营与优化",
+    "s3Tagline": "持续优化",
+    "s3Desc": "持续监控、精细调优和迭代，确保您的智能体持续产出可衡量的业务成果。",
+    "learnMore": "了解更多 →"
+  },
+  "howItWorks": {
+    "headline": "三步，从零到 AI 驱动",
+    "step1Title": "评估",
+    "step1Desc": "我们梳理您现有的业务流程，找出 AI 智能体价值最大的切入点。",
+    "step2Title": "构建",
+    "step2Desc": "我们开发并集成定制 AI 智能体，无缝融入您现有系统，不影响日常运营。",
+    "step3Title": "运营",
+    "step3Desc": "我们持续监控效果、调优智能体，让您的 AI 越用越智能。"
+  },
+  "caseStudies": {
+    "headline": "真实企业，真实成果",
+    "subtext": "看看与您类似的企业如何通过 AI 智能体完成转型。",
+    "badge1": "电商",
+    "result1Number": "70%",
+    "result1Label": "客服工单减少",
+    "scenario1": "某电商平台部署客服智能体，全天候处理退货、物流查询和常见问题——支持多语言。",
+    "badge2": "物流",
+    "result2Number": "40%",
+    "result2Label": "响应速度提升",
+    "scenario2": "某区域物流公司自动化订单追踪和异常处理，将运营团队从重复查询中解放出来。",
+    "badge3": "专业服务",
+    "result3Number": "3倍",
+    "result3Label": "员工入职速度提升",
+    "scenario3": "某咨询公司构建内部知识智能体，即时回答 HR、政策和项目相关问题。",
+    "readMore": "查看完整案例 →"
+  },
+  "stats": {
+    "stat1Number": "50",
+    "stat1Suffix": "+",
+    "stat1Label": "中小企业完成转型",
+    "stat2Number": "10000",
+    "stat2Suffix": "+",
+    "stat2Label": "小时自动化",
+    "stat3Number": "3.2",
+    "stat3Suffix": "x",
+    "stat3Label": "平均投资回报",
+    "stat4Number": "8",
+    "stat4Suffix": "周",
+    "stat4Label": "平均部署周期"
+  },
+  "cta": {
+    "headline": "准备好成为 AI 驱动的企业了吗？",
+    "subtext": "从一次免费的 30 分钟评估通话开始。",
+    "formLabel": "或留下您的联系方式",
+    "fieldName": "姓名",
+    "fieldCompany": "公司名称",
+    "fieldEmail": "邮箱",
+    "fieldChallenge": "您最大的挑战是什么？（选填）",
+    "submit": "预约免费评估",
+    "loading": "提交中...",
+    "successTitle": "感谢您！我们将在 24 小时内与您联系。",
+    "errorMsg": "出现错误，请重试。"
+  },
+  "testimonials": {
+    "headline": "客户怎么说",
+    "q1": "DreamWise AI 帮我们发现了此前未曾注意到的自动化机会。短短 6 周内，客服团队在不增加人手的情况下处理了 3 倍的工作量。",
+    "name1": "Sarah Chen",
+    "role1": "COO，NovaTech Solutions",
+    "q2": "我们用了好几个月的通用 AI 工具，毫无成效。DreamWise 专为我们的物流工作流打造了专属方案——效果天壤之别。",
+    "name2": "Marcus Rivera",
+    "role2": "运营总监，SwiftMove Logistics",
+    "q3": "第一个月就看到了明显的投资回报。知识智能体处理了 80% 的内部提问，让 HR 团队能专注于真正重要的事情。",
+    "name3": "Priya Patel",
+    "role3": "CEO，Meridian Consulting"
+  },
+  "about": {
+    "label": "关于 DreamWise AI",
+    "headline": "为什么选择 DreamWise AI？",
+    "mission": "我们创立 DreamWise AI 源于一个简单的信念：AI 智能体不应只是大型企业的专利。中小企业同样值得拥有这项变革性技术——以务实、可负担、无废话的方式落地。",
+    "vp1Title": "专为中小企业设计，而非大型企业",
+    "vp1Desc": "没有臃肿的实施方案。我们行动迅速，聚焦真正重要的事。",
+    "vp2Title": "我们是实干者，不是顾问",
+    "vp2Desc": "我们自己构建智能体，不外包，不转包。",
+    "vp3Title": "以结果为导向的合作方式",
+    "vp3Desc": "我们在合作开始前就定义成功指标，让您清楚知道将获得什么。",
+    "cardQuote": "我们相信每家企业都应该能用上 AI——不需要复杂。"
+  },
+  "footer": {
+    "tagline": "未来由智能体驱动。",
+    "copyright": "© 2026 DreamWise AI. 保留所有权利。",
+    "contactLabel": "联系我们",
+    "email": "consulting@dreamwiseai.com"
+  }
+}

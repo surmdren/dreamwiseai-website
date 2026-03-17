@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main>
-      <p>Coming soon.</p>
-    </main>
-  );
+import { redirect } from 'next/navigation'
+
+export default function RootPage() {
+  redirect('/en')
 }

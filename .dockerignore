@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+*.md
+.env*
+!.env.local.example
+DevPlan
+Architecture
+Design
+TechSolution
+docs
+ProjectManager
+.claude

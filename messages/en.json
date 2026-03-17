@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "DreamWise AI — AI Agent Consulting for SMEs",
+    "description": "We help small and medium businesses become agent-driven. Custom AI agent development, readiness assessment, and ongoing optimization.",
+    "keywords": "AI agent consulting, AI transformation, SME AI, business automation, AI agents"
+  },
+  "navbar": {
+    "logo": "DreamWise AI",
+    "services": "Services",
+    "howItWorks": "How It Works",
+    "caseStudies": "Case Studies",
+    "about": "About",
+    "bookCall": "Book a Free Call",
+    "langToggle": "中文"
+  },
+  "hero": {
+    "badge": "AI Agent Consulting",
+    "title": "Your Business, Powered by AI Agents.",
+    "slogan": "The Future is Agent-Driven. We'll Get You There.",
+    "ctaPrimary": "Book a Free Assessment",
+    "ctaSecondary": "See Case Studies"
+  },
+  "trustLogos": {
+    "label": "Trusted by innovative companies"
+  },
+  "problem": {
+    "headline": "Why Most SMEs Struggle with AI Adoption",
+    "subtext": "You're not alone. These are the three barriers we hear every day.",
+    "card1Title": "No Clear Starting Point",
+    "card1Desc": "AI feels overwhelming without a roadmap. Most companies don't know where to begin.",
+    "card2Title": "Generic Solutions Don't Fit",
+    "card2Desc": "Off-the-shelf AI tools miss your specific workflows and create more problems than they solve.",
+    "card3Title": "No One to Own It",
+    "card3Desc": "AI projects stall without dedicated expertise. Your team is busy — who drives this forward?"
+  },
+  "services": {
+    "headline": "What We Do",
+    "subtext": "Three services. One complete journey from AI-curious to agent-driven.",
+    "s1Badge": "Step 01",
+    "s1Name": "Agent Readiness Assessment",
+    "s1Tagline": "Know where to start",
+    "s1Desc": "We audit your processes, identify high-impact automation opportunities, and deliver a clear AI roadmap.",
+    "s2Badge": "Step 02",
+    "s2Name": "Custom Agent Development",
+    "s2Tagline": "Built for your business",
+    "s2Desc": "We design and deploy AI agents tailored to your workflows — from customer service to internal operations.",
+    "s3Badge": "Step 03",
+    "s3Name": "Agent Operations & Optimization",
+    "s3Tagline": "Keep improving",
+    "s3Desc": "Ongoing monitoring, fine-tuning, and iteration to ensure your agents deliver measurable business results.",
+    "learnMore": "Learn more →"
+  },
+  "howItWorks": {
+    "headline": "From Zero to Agent-Driven in 3 Steps",
+    "step1Title": "Assess",
+    "step1Desc": "We map your current processes and identify where AI agents create the most value. Output: your AI roadmap.",
+    "step2Title": "Build",
+    "step2Desc": "We develop and integrate custom agents into your existing systems. No disruption to daily operations.",
+    "step3Title": "Operate",
+    "step3Desc": "We monitor performance, tune your agents, and continuously improve outcomes."
+  },
+  "caseStudies": {
+    "headline": "Real Results for Real Businesses",
+    "subtext": "See how companies like yours are transforming with AI agents.",
+    "badge1": "E-Commerce",
+    "result1Number": "70%",
+    "result1Label": "Reduction in support tickets",
+    "scenario1": "An online retailer deployed a customer service agent that handles returns, tracking, and FAQs — 24/7, in multiple languages.",
+    "badge2": "Logistics",
+    "result2Number": "40%",
+    "result2Label": "Faster response time",
+    "scenario2": "A regional logistics company automated order tracking and exception handling, freeing ops teams from repetitive queries.",
+    "badge3": "Professional Services",
+    "result3Number": "3x",
+    "result3Label": "Faster employee onboarding",
+    "scenario3": "A consulting firm built an internal knowledge agent that answers HR, policy, and project questions instantly.",
+    "readMore": "Read case study →"
+  },
+  "stats": {
+    "stat1Number": "50",
+    "stat1Suffix": "+",
+    "stat1Label": "SMEs Transformed",
+    "stat2Number": "10000",
+    "stat2Suffix": "+",
+    "stat2Label": "Hours Automated",
+    "stat3Number": "3.2",
+    "stat3Suffix": "x",
+    "stat3Label": "Average ROI",
+    "stat4Number": "8",
+    "stat4Suffix": "wks",
+    "stat4Label": "Avg. Time to Deploy"
+  },
+  "cta": {
+    "headline": "Ready to Become Agent-Driven?",
+    "subtext": "Start with a free 30-minute assessment call.",
+    "formLabel": "Or leave your details",
+    "fieldName": "Full Name",
+    "fieldCompany": "Company",
+    "fieldEmail": "Email",
+    "fieldChallenge": "What's your biggest challenge? (Optional)",
+    "submit": "Book My Free Assessment",
+    "loading": "Sending...",
+    "successTitle": "Thanks! We'll be in touch within 24 hours.",
+    "errorMsg": "Something went wrong. Please try again."
+  },
+  "testimonials": {
+    "headline": "What Our Clients Say",
+    "q1": "DreamWise AI helped us identify automation opportunities we didn't even know existed. Within 6 weeks, our customer service team was handling 3x the volume without adding headcount.",
+    "name1": "Sarah Chen",
+    "role1": "COO, NovaTech Solutions",
+    "q2": "We tried generic AI tools for months with no results. DreamWise built something specifically for our logistics workflow — the difference was night and day.",
+    "name2": "Marcus Rivera",
+    "role2": "Operations Director, SwiftMove Logistics",
+    "q3": "The ROI was visible within the first month. Our knowledge agent handles 80% of internal questions, freeing our HR team to focus on what really matters.",
+    "name3": "Priya Patel",
+    "role3": "CEO, Meridian Consulting"
+  },
+  "about": {
+    "label": "About DreamWise AI",
+    "headline": "Why DreamWise AI?",
+    "mission": "We started DreamWise AI with a simple belief: AI agents shouldn't be reserved for Fortune 500 companies. SMEs deserve the same transformative technology — delivered pragmatically, affordably, and without the consulting-speak.",
+    "vp1Title": "Built for SMEs, not enterprises",
+    "vp1Desc": "No bloated implementations. We move fast and focus on what matters.",
+    "vp2Title": "Practitioners, not consultants",
+    "vp2Desc": "We build the agents ourselves. No outsourcing, no middlemen.",
+    "vp3Title": "Results-first engagement",
+    "vp3Desc": "We define success metrics upfront. You know exactly what you're getting.",
+    "cardQuote": "We believe every business deserves access to AI — without the complexity."
+  },
+  "footer": {
+    "tagline": "The Future is Agent-Driven.",
+    "copyright": "© 2026 DreamWise AI. All rights reserved.",
+    "contactLabel": "Get in touch",
+    "email": "consulting@dreamwiseai.com"
+  }
+}
