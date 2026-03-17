@@ -1,6 +1,6 @@
 # DreamWise AI 官网 — 产品需求文档
 
-**版本**：v1.0
+**版本**：v1.1
 **日期**：2026-03-17
 **状态**：待确认
 
@@ -118,7 +118,7 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | 响应式 | 完整支持 Mobile / Tablet / Desktop |
 | 性能 | 纯静态渲染，无外部 API 依赖 |
 | 动效 | 适度（scroll fade-in，无过度动画） |
-| 语言 | 英语 |
+| 语言 | 英语（默认）+ 中文，自动检测浏览器语言 |
 | 表单 | 纯前端状态，不需要后端接口 |
 
 ---
@@ -132,6 +132,9 @@ DreamWise AI 是一家 AI 咨询公司，专注于帮助中小企业通过 AI Ag
 | 动效 | Framer Motion（已安装） |
 | 图标 | Lucide React（已安装） |
 | 字体 | Google Fonts（Sora + Inter） |
+| 国际化 | next-intl，`messages/en.json` + `messages/zh.json` |
+| 语言检测 | 自动读取 `Accept-Language` Header，中文（zh/zh-CN/zh-TW）→ 中文，其余 → 英文 |
+| 语言切换 | Navbar 右上角提供 EN / 中文 手动切换按钮（覆盖自动检测） |
 | 操作 | 清空现有 `components/` 所有组件，重写 `app/page.tsx` |
 
 ---
