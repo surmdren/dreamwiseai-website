@@ -1,3 +1,4 @@
+'use client'
 import { Search, Code2, TrendingUp } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'

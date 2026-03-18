@@ -16,7 +16,7 @@
 | Phase 8a: 开发实现(dev-executor) | [x] | 2026-03-18 | All 12 sections + API + i18n + K8s |
 | Phase 8b: 自动巡检(dev-autopilot) | [x] | 2026-03-18 | Build ✅ |
 | Phase 8c: UTM 注入 | [ ] | - | lib/utm.ts + lib/analytics.ts |
-| Phase 9: 技术验收 | [ ] | - | QA/release-qa-report.md |
+| Phase 9: 技术验收 | [x] | 2026-03-18 | QA/release-qa-report.md |
 | Phase 10: UAT | [ ] | - | UAT/uat-report.md |
 | Phase 11: 安全扫描 | [ ] | - | Security/pentest-report.md |
 | Phase 12: K8s 部署 | [ ] | - | - |

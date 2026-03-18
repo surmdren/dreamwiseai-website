@@ -1,3 +1,4 @@
+'use client'
 import { useTranslations } from 'next-intl'
 
 const LOGOS = ['Acme Corp', 'GlobalTech', 'NextWave', 'PrimeSoft', 'FutureGroup']

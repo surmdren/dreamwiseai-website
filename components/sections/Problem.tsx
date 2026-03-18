@@ -1,3 +1,4 @@
+'use client'
 import { MapPin, Puzzle, Users } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
