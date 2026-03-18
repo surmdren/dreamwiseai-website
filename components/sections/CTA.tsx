@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { Button } from '@/components/ui/Button'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -23,9 +24,16 @@ export function CTA() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setFormState(res.ok ? 'success' : 'error')
+      if (res.ok) {
+        setFormState('success')
+        trackEvent('lead_form_submitted', { company: form.company })
+      } else {
+        setFormState('error')
+        trackEvent('lead_form_error', { status: res.status })
+      }
     } catch {
       setFormState('error')
+      trackEvent('lead_form_error', { status: 'network' })
     }
   }
 

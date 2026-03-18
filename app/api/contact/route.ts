@@ -7,6 +7,15 @@ interface ContactFormData {
   challenge?: string
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json()
@@ -17,6 +26,10 @@ export async function POST(request: NextRequest) {
         { error: 'Missing required fields: name, company, email' },
         { status: 400 }
       )
+    }
+
+    if (name.length > 100 || company.length > 100 || email.length > 254 || (challenge && challenge.length > 2000)) {
+      return Response.json({ error: 'Input exceeds maximum length' }, { status: 400 })
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -35,18 +48,23 @@ export async function POST(request: NextRequest) {
     const { Resend } = await import('resend')
     const resend = new Resend(process.env.RESEND_API_KEY)
 
+    const safeName = escapeHtml(name)
+    const safeCompany = escapeHtml(company)
+    const safeEmail = escapeHtml(email)
+    const safeChallenge = challenge ? escapeHtml(challenge) : ''
+
     const { error } = await resend.emails.send({
-      from: 'DreamWise AI Website <noreply@dreamwiseai.com>',
+      from: 'DreamWise AI Website <hello@dreamwiseai.com>',
       to: process.env.CONTACT_EMAIL!,
-      subject: `New Lead: ${name} from ${company}`,
+      subject: `New Lead: ${safeName} from ${safeCompany}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
           <h2 style="color:#1E3A8A;">New Lead from DreamWise AI Website</h2>
           <table style="width:100%;border-collapse:collapse;">
-            <tr><td style="padding:8px;font-weight:bold;width:140px;">Name:</td><td style="padding:8px;">${name}</td></tr>
-            <tr style="background:#f8fafc;"><td style="padding:8px;font-weight:bold;">Company:</td><td style="padding:8px;">${company}</td></tr>
-            <tr><td style="padding:8px;font-weight:bold;">Email:</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
-            ${challenge ? `<tr style="background:#f8fafc;"><td style="padding:8px;font-weight:bold;">Challenge:</td><td style="padding:8px;">${challenge}</td></tr>` : ''}
+            <tr><td style="padding:8px;font-weight:bold;width:140px;">Name:</td><td style="padding:8px;">${safeName}</td></tr>
+            <tr style="background:#f8fafc;"><td style="padding:8px;font-weight:bold;">Company:</td><td style="padding:8px;">${safeCompany}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;">Email:</td><td style="padding:8px;"><a href="mailto:${safeEmail}">${safeEmail}</a></td></tr>
+            ${safeChallenge ? `<tr style="background:#f8fafc;"><td style="padding:8px;font-weight:bold;">Challenge:</td><td style="padding:8px;">${safeChallenge}</td></tr>` : ''}
           </table>
           <p style="color:#94a3b8;font-size:12px;margin-top:24px;">Submitted at ${new Date().toUTCString()}</p>
         </div>

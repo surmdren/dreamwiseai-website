@@ -20,26 +20,38 @@ description: 将应用部署到Kubernetes集群。构建容器镜像、推送到
 ## Namespace 命名规范
 
 ```
-格式: <project>-<env>-<component>
-示例: myapp-dev-backend / myapp-prod-frontend / myapp-prod-infra
+main 分支部署:       <project>-<component>            # 快速部署，无 env 后缀
+staging（tag 触发）: <project>-staging-<component>
+prod（tag + 审批）:  <project>-prod-<component>
+dev（本地 kind）:    <project>-dev-<component>
+
+示例:
+  myapp-backend            # main 分支部署
+  myapp-staging-backend    # staging
+  myapp-prod-backend       # prod
+  myapp-dev-backend        # 本地 kind 测试
 ```
 
-| 环境 | 用途 | 资源规格 |
-|------|------|---------|
-| dev | 开发测试 | 低配置 |
-| staging | 预发布 | 中等配置 |
-| prod | 生产环境 | 高配置 + HPA |
+| 环境 | Namespace 格式 | 触发方式 | 资源规格 |
+|------|---------------|---------|---------|
+| dev | `<project>-dev-<component>` | 其他分支，kind 集群 | 低配置 |
+| main | `<project>-<component>` | main 分支推送 | 中等配置 |
+| staging | `<project>-staging-<component>` | 打 tag `v*.*.*` | 中等配置 |
+| prod | `<project>-prod-<component>` | tag + 手动审批 | 高配置 + HPA |
 
 > **强制规则：创建 Namespace 时必须同步创建 ResourceQuota + LimitRange。**
 
 ```bash
-kubectl create namespace ${PROJECT}-${ENV}-backend
+# prod namespace（无 env 后缀）
+kubectl create namespace ${PROJECT}-backend
+# staging namespace
+kubectl create namespace ${PROJECT}-staging-backend
 kubectl apply -f - <<EOF
 apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: quota
-  namespace: ${PROJECT}-${ENV}-backend
+  namespace: ${NAMESPACE}   # prod: ${PROJECT}-backend  staging: ${PROJECT}-staging-backend
 spec:
   hard:
     requests.cpu: "1"
@@ -52,7 +64,7 @@ apiVersion: v1
 kind: LimitRange
 metadata:
   name: limits
-  namespace: ${PROJECT}-${ENV}-backend
+  namespace: ${NAMESPACE}
 spec:
   limits:
     - type: Container
@@ -79,6 +91,10 @@ EOF
 ## Step 1: 部署前检查
 
 ```bash
+# 自动推导项目名（与 infrastructure-provisioner 和 Supabase schema 命名逻辑一致）
+export PROJECT=$(basename $(pwd) | tr '[:upper:]' '[:lower:]' | tr '-' '_')
+echo "Project: $PROJECT"
+
 cat TechSolution/infrastructure/kubernetes.md
 cat DevPlan/checklist.md
 # 确认：Dockerfile 存在 / K8s 配置文件存在 / kubectl 已配置 / 镜像仓库权限
@@ -92,7 +108,7 @@ fi
 
 ---
 
-## Step 1.5: 确定部署版本号
+## Step 1.5: 确定部署版本号和 Namespace
 
 部署脚本**不创建 git tag**。Tag 由开发者手动打，或由 CI 在 push tag 时自动触发。
 
@@ -101,11 +117,26 @@ fi
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ -z "${ENV}" ]; then
   case "${CURRENT_BRANCH}" in
-    main) export ENV="prod" ;;
+    main) export ENV="main" ;;
     staging) export ENV="staging" ;;
     *)  export ENV="dev" ;;
   esac
 fi
+
+# Namespace 生成函数（ENV 决定前缀，component 由调用方传入）
+# main → <project>-<component>（无 env 后缀）
+# staging → <project>-staging-<component>
+# dev → <project>-dev-<component>
+ns() {
+  local component=$1
+  case "${ENV}" in
+    main)    echo "${PROJECT}-${component}" ;;
+    staging) echo "${PROJECT}-staging-${component}" ;;
+    prod)    echo "${PROJECT}-prod-${component}" ;;
+    dev)     echo "${PROJECT}-dev-${component}" ;;
+  esac
+}
+# 示例：ns backend → myapp-backend（main）或 myapp-staging-backend（staging）
 
 # 确定镜像版本号
 case "${ENV}" in
@@ -120,22 +151,31 @@ case "${ENV}" in
     export VERSION=$(git rev-parse --short HEAD)
     echo "🔧 本地开发部署 | ENV=dev | VERSION=${VERSION}"
     ;;
-  staging|prod)
-    # staging/prod：读取已有的语义化 tag（由 CI 或开发者手动创建）
+  main)
+    # main 分支直接部署，使用 commit hash
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+      echo "⚠️  有未提交的改动，请先 commit 再部署"
+      exit 1
+    fi
+    export VERSION=$(git rev-parse --short HEAD)
+    echo "🚀 main 部署（无环境区分）| VERSION=${VERSION}"
+    ;;
+  staging)
+    # staging：由 CI 在 push v*.*.* tag 时触发，使用语义化 tag
     export VERSION=$(git describe --tags --always)
     if [[ "${VERSION}" != v*.*.* ]]; then
       echo "⚠️  当前 HEAD 无语义化 tag（如 v1.2.0），VERSION 将为 ${VERSION}"
-      echo "   staging/prod 部署建议先打 tag：git tag v1.2.0 && git push origin v1.2.0"
+      echo "   staging 部署建议先打 tag：git tag v1.2.0 && git push origin v1.2.0"
     fi
-    echo "🚀 ${ENV} 部署 | VERSION=${VERSION}"
+    echo "🧪 staging 部署 | VERSION=${VERSION}"
     ;;
 esac
 ```
 
-> **Tag 策略：**
-> - `dev`：使用 commit hash（如 `a3f1b2c`），仅加载到 kind 集群，不推送 registry
-> - `staging`：CI 在 push `v*.*.*` tag 时自动构建并部署
-> - `prod`：手动 `workflow_dispatch` 并指定已验证的 `v*.*.*` tag
+> **部署策略：**
+> - `main` 分支：直接部署到 `<project>-<component>`（无 env 后缀），commit hash 作为版本号
+> - `v*.*.*` tag：先自动部署到 staging（`<project>-staging-<component>`），手动审批后同一 tag 部署到 prod（`<project>-prod-<component>`）
+> - `dev`（本地 kind）：commit hash 作为镜像 tag，不推送 registry
 > - `latest` / `staging-latest`：仅作为 Docker Build Cache，**不用于部署引用**
 
 ---
@@ -229,14 +269,18 @@ docker push registry.cn-hangzhou.aliyuncs.com/myapp/backend:${VERSION}
 
 ```bash
 export PROJECT=myapp
-export ENV=staging
-export VERSION=$(git describe --tags --always)
+export ENV=main   # main / staging / dev
+export VERSION=$(git rev-parse --short HEAD)   # 或 git describe --tags --always（tag 部署）
 export IMAGE_REGISTRY=123456.dkr.ecr.us-east-1.amazonaws.com/myapp
 
-envsubst < backend/k8s/deployment.yaml | kubectl apply -f -
-envsubst < backend/k8s/service.yaml    | kubectl apply -f -
-envsubst < frontend/k8s/deployment.yaml | kubectl apply -f -
-envsubst < frontend/k8s/service.yaml    | kubectl apply -f -
+# 使用 ns() 函数自动推导 namespace（在 Step 1.5 中定义）
+BACKEND_NS=$(ns backend)   # main→myapp-backend  staging→myapp-staging-backend
+FRONTEND_NS=$(ns frontend)
+
+envsubst < backend/k8s/deployment.yaml  | kubectl apply -f - -n ${BACKEND_NS}
+envsubst < backend/k8s/service.yaml     | kubectl apply -f - -n ${BACKEND_NS}
+envsubst < frontend/k8s/deployment.yaml | kubectl apply -f - -n ${FRONTEND_NS}
+envsubst < frontend/k8s/service.yaml    | kubectl apply -f - -n ${FRONTEND_NS}
 envsubst < k8s/ingress.yaml             | kubectl apply -f -
 
 # 或使用 Kustomize（多环境推荐）
@@ -248,7 +292,7 @@ kubectl apply -k infrastructure/k8s/overlays/${ENV}
 kubectl create secret generic backend-secrets \
   --from-literal=database-url='postgresql://...' \
   --from-literal=jwt-secret='...' \
-  -n ${PROJECT}-${ENV}-backend
+  -n $(ns backend)
 ```
 
 ---

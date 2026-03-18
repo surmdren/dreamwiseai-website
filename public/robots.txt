@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Disallow build artifacts and API routes
+Disallow: /_next/
+Disallow: /api/
+
 Sitemap: https://dreamwiseai.com/sitemap.xml

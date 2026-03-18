@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { Sparkles } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 import { HeroBackground } from '@/components/ui/HeroBackground'
 
 export function Hero() {
@@ -37,7 +38,7 @@ export function Hero() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => { trackEvent('hero_cta_clicked'); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
             >
               {t('ctaPrimary')}
             </Button>
