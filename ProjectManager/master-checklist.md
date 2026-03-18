@@ -19,9 +19,9 @@
 | Phase 9: 技术验收 | [x] | 2026-03-18 | QA/release-qa-report.md |
 | Phase 10: UAT | [ ] | - | UAT/uat-report.md |
 | Phase 11: 安全扫描 | [ ] | - | Security/pentest-report.md |
-| Phase 12: K8s 部署 | [ ] | - | - |
-| Phase 12b: 冒烟测试 | [ ] | - | QA/smoke-test-report.md |
-| Phase 13: 域名映射 | [ ] | - | dreamwiseai-website.dreamwiseai.com |
+| Phase 12: K8s 部署 | [x] | 2026-03-18 | 2/2 pods Running, NodePort 30089 |
+| Phase 12b: 冒烟测试 | [x] | 2026-03-18 | HTTP 200 at 172.18.0.2:30089 |
+| Phase 13: 域名映射 | [⏳] | - | Tunnel 已配置，待 Cloudflare DNS CNAME |
 
 ---
 
