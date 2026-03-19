@@ -1,19 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dreamwiseai-website
-  namespace: production
+  name: dreamwiseai-website-ingress
+  namespace: dreamwiseai-website-frontend
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-        - dreamwiseai.com
-        - www.dreamwiseai.com
-      secretName: dreamwiseai-tls
   rules:
     - host: dreamwiseai.com
       http:
@@ -22,7 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: dreamwiseai-website
+                name: dreamwiseai-website-svc
                 port:
                   number: 80
     - host: www.dreamwiseai.com
@@ -32,6 +24,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: dreamwiseai-website
+                name: dreamwiseai-website-svc
                 port:
                   number: 80

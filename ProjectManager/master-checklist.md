@@ -20,9 +20,9 @@
 | Phase 9: 技术验收 | [x] | 2026-03-18 | QA/release-qa-report.md |
 | Phase 10: UAT | [x] | 2026-03-18 | UAT/uat-report.md（14/14 通过） |
 | Phase 11: 安全扫描 | [x] | 2026-03-18 | security-report/README.md（5/6 修复） |
-| Phase 12: K8s 部署 | [x] | 2026-03-18 | 2/2 pods Running，ns: dreamwiseai-website-frontend |
-| Phase 12b: 冒烟测试 | [x] | 2026-03-18 | HTTP 200 at 172.18.0.2:30089 |
-| Phase 13: 域名映射 | [x] | 2026-03-18 | https://dreamwiseai.com ✅ |
+| Phase 12: K8s 部署 | [x] | 2026-03-19 | 2/2 pods Running，k3s，ns: dreamwiseai-website-frontend |
+| Phase 12b: 冒烟测试 | [x] | 2026-03-19 | HTTP 200，Traefik Ingress，k3s |
+| Phase 13: 域名映射 | [x] | 2026-03-19 | https://dreamwiseai.com ✅，cloudflared→k3s Traefik |
 | Phase 14: SEO 优化 | [x] | 2026-03-18 | SEO/seo-audit-report.md |
 | Phase 15: 监控告警 | [ ] | - | Monitoring/monitoring-report.md |
 
