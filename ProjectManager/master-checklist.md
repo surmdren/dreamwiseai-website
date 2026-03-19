@@ -1,7 +1,7 @@
 # Project Manager - Master Checklist
 # 项目名称: dreamwiseai-website
 # 创建时间: 2026-03-18
-# 最后更新: 2026-03-18
+# 最后更新: 2026-03-19
 
 ## 进度总览
 
@@ -13,85 +13,82 @@
 | Phase 4: 设计系统 | [x] | 2026-03-18 | Design/design-system.md |
 | Phase 5: 页面设计 | [x] | 2026-03-18 | Design/pages/ |
 | Phase 6: 开发规划 | [x] | 2026-03-18 | DevPlan/ |
-| Phase 7: 基础设施 | [SKIP] | 2026-03-18 | 无数据库，K8s 配置在模块 13 |
-| Phase 8a: 开发实现(dev-executor) | [x] | 2026-03-18 | All 12 sections + API + i18n + K8s |
-| Phase 8b: 自动巡检(dev-autopilot) | [x] | 2026-03-18 | Build ✅ |
-| Phase 8c/16: UTM 注入 | [x] | 2026-03-18 | lib/utm.ts + PostHog Dashboard 1373649 |
+| Phase 7: 基础设施 | [SKIP] | 2026-03-18 | 无数据库，K8s 配置在 Phase 12 |
+| Phase 8a: 开发实现 | [x] | 2026-03-18 | 12 sections + API + i18n |
+| Phase 8b: 自动巡检 | [x] | 2026-03-18 | Build ✅ |
+| Phase 8c: UTM 注入 | [x] | 2026-03-18 | lib/utm.ts + lib/analytics.ts + PostHog Dashboard |
 | Phase 9: 技术验收 | [x] | 2026-03-18 | QA/release-qa-report.md |
 | Phase 10: UAT | [x] | 2026-03-18 | UAT/uat-report.md（14/14 通过） |
-| Phase 11: 安全扫描 | [x] | 2026-03-18 | security-report/README.md（5/6 修复） |
-| Phase 12: K8s 部署 | [x] | 2026-03-19 | 2/2 pods Running，k3s，ns: dreamwiseai-website-frontend |
-| Phase 12b: 冒烟测试 | [x] | 2026-03-19 | HTTP 200，Traefik Ingress，k3s |
-| Phase 13: 域名映射 | [x] | 2026-03-19 | https://dreamwiseai.com ✅，cloudflared→k3s Traefik |
-| Phase 14: SEO 优化 | [x] | 2026-03-18 | SEO/seo-audit-report.md |
+| Phase 11: 安全扫描 | [x] | 2026-03-18 | security-report/README.md |
+| Phase 12: K8s 部署 | [x] | 2026-03-19 | k3s，ns: dreamwiseai-website-frontend，2/2 Running |
+| Phase 12b: 冒烟测试 | [x] | 2026-03-19 | HTTP 200，Traefik Ingress |
+| Phase 13: 域名映射 | [x] | 2026-03-19 | https://dreamwiseai.com ✅ cloudflared→k3s |
+| Phase 14: SEO 优化 | [x] | 2026-03-18 | sitemap.ts + JSON-LD + hreflang |
 | Phase 15: 监控告警 | [ ] | - | Monitoring/monitoring-report.md |
-
-| Phase 17: CI/CD | [ ] | - | .github/workflows/ |
+| Phase 16: CI/CD | [ ] | - | .github/workflows/ |
 
 ---
 
 ## 已完成 Phases
 
-### [x] Phase 1-6: 需求/架构/设计/规划
-- [x] PRD、架构图、技术方案、设计系统、页面设计、开发规划均已产出
-
 ### [x] Phase 8a: 开发实现
-- [x] 12 个页面区块全部实现
-- [x] /api/contact 留资表单 API（Resend）
-- [x] i18n 双语（EN/ZH）
-- [x] K8s 部署配置
+- [x] 12 个页面区块全部实现（Hero/Services/CaseStudies/Stats/Testimonials/CTA 等）
+- [x] /api/contact 留资表单 API（Resend，from: hello@dreamwiseai.com）
+- [x] i18n 双语（EN/ZH，next-intl）
 
-### [x] Phase 9: 技术验收
-- [x] 构建通过，功能完整性验证通过
+### [x] Phase 8c: UTM 注入
+- [x] lib/utm.ts（first-touch 模型，localStorage 存储）
+- [x] lib/analytics.ts（GA4 + PostHog 双轨）
+- [x] AnalyticsProvider 注入 layout.tsx
+- [x] 业务事件：hero_cta_clicked、lead_form_submitted、lead_form_error
+- [x] PostHog Dashboard #1373649：dreamwiseai-website | dreamwiseai.com
 
 ### [x] Phase 10: UAT
-- [x] 14/14 场景全部通过（Playwright + Chromium）
+- [x] 14/14 Playwright 场景通过（Chromium）
 - [x] 报告：UAT/uat-report.md
 
 ### [x] Phase 11: 安全扫描
-- [x] Critical 0 / High 1（已评估可接受）/ Medium 0
-- [x] 已修复：Next.js 升级 14.2.35、XSS escapeHtml、HTTP 安全头、输入长度限制
+- [x] Next.js 升级 14.2.35（修复 Critical: Authorization Bypass）
+- [x] Email HTML XSS 修复（escapeHtml）
+- [x] HTTP 安全头（X-Frame-Options、CSP、X-Content-Type-Options 等）
+- [x] 输入长度限制
 - [x] 报告：security-report/README.md
 
-### [x] Phase 12: K8s 部署
-- [x] 2/2 pods Running（dreamwiseai-website-prod）
-- [x] NodePort 30089，Kind 集群（dreamai）
-- [x] 安全修复版本镜像：bfc51f1-sec
+### [x] Phase 12: K8s 部署（k3s）
+- [x] 集群：k3s，节点 ysurmd，Traefik 内置 Ingress
+- [x] Namespace：dreamwiseai-website-frontend（含 ResourceQuota + LimitRange）
+- [x] 镜像：localhost:5000/dreamwiseai-website:utm-v2（k3s ctr import）
+- [x] 2/2 pods Running
 
 ### [x] Phase 13: 域名映射
-- [x] cloudflared tunnel 运行（ID: c4cc4167）
-- [x] dreamwiseai.com CNAME → tunnel ✅
-- [x] www.dreamwiseai.com CNAME → tunnel ✅
-- [x] https://dreamwiseai.com 可正常访问
+- [x] cloudflared tunnel（ID: c4cc4167）→ k3s Traefik（127.0.0.1:80）
+- [x] DNS: dreamwiseai.com CNAME → tunnel
+- [x] DNS: www.dreamwiseai.com CNAME → tunnel
+- [x] DMARC + SPF 记录已配置
+- [x] MX 修复：eforward → mx1/mx2.privateemail.com
+- [x] https://dreamwiseai.com ✅
+
+### [x] Phase 14: SEO 优化
+- [x] app/sitemap.ts（动态生成，EN/ZH hreflang）
+- [x] JSON-LD（Organization + WebSite）
+- [x] OG / Twitter Card meta tags
+- [x] robots.txt
+- [x] 报告：SEO/seo-audit-report.md
 
 ---
 
-## 待完成 Phases（上线后优化）
-
-### [ ] Phase 8c / 16: UTM 注入
-- [ ] 执行 /utm-injector
-- [ ] lib/utm.ts（UTM 参数捕获）
-- [ ] lib/analytics.ts（GA4 + PostHog 双轨）
-- [ ] AARRR 核心事件注入
-- [ ] PostHog Dashboard 自动创建
-
-### [ ] Phase 14: SEO 优化
-- [ ] 执行 /seo-optimizer
-- [ ] sitemap.xml、robots.txt
-- [ ] meta tags、OG 标签
-- [ ] hreflang（EN/ZH 双语）
-- [ ] JSON-LD 结构化数据
+## 待完成 Phases
 
 ### [ ] Phase 15: 监控告警
 - [ ] 执行 /monitoring-setup
-- [ ] Sentry 错误追踪（前端）
+- [ ] Sentry 错误追踪
 - [ ] UptimeRobot 可用性监控
 - [ ] 告警规则（错误率/响应时间）
 
-### [ ] Phase 17: CI/CD
+### [ ] Phase 16: CI/CD
 - [ ] 执行 /cicd-setup
-- [ ] GitHub Actions：CI（PR 自动测试）
-- [ ] CD Staging（Tag 触发构建+部署）
+- [ ] GitHub Actions CI（PR 自动测试）
+- [ ] CD Staging（Tag 触发构建+部署到 k3s）
 - [ ] CD Prod（手动审批）
 
 ---
@@ -100,20 +97,22 @@
 
 | 编号 | 类型 | 说明 | 优先级 |
 |------|------|------|--------|
-| L-01 | 安全 | Next.js 残留 1 个 High（需升级 v15.x，当前场景不触发） | 低 |
-| L-02 | 安全 | HSTS 需 Nginx/Ingress 层配置（待 HTTPS 完整配置后加） | 低 |
-| L-03 | 素材 | og-image-en.png / og-image-zh.png 缺失（社交分享无预览图） | 中 |
+| L-01 | 安全 | Next.js 残留 High（需升级 v15.x，当前场景不触发） | 低 |
+| L-02 | 安全 | HSTS 头需 Traefik 层配置 | 低 |
+| L-03 | 素材 | og-image-en.png / og-image-zh.png 缺失 | 中 |
+| L-04 | 配置 | NEXT_PUBLIC_GA_MEASUREMENT_ID 未填（GA4 暂未启用） | 低 |
 
 ---
 
 ## 运行日志
 
 ```
-2026-03-18 - Project Manager 初始化完成
-2026-03-18 - Phase 1 (PRD) 已完成（brainstorming 阶段产出）
-2026-03-18 - Phase 8a/8b/9 完成（开发 + 构建验证）
-2026-03-18 - Phase 10 完成（UAT 14/14 通过）
-2026-03-18 - Phase 11 完成（安全扫描，5 个漏洞已修复）
-2026-03-18 - Phase 12 完成（K8s 部署，安全修复版本上线）
-2026-03-18 - Phase 13 完成（dreamwiseai.com DNS CNAME 配置完成，网站上线）
+2026-03-18 - 项目初始化，Phase 1-9 完成
+2026-03-18 - Phase 10 UAT 14/14 通过
+2026-03-18 - Phase 11 安全扫描，5 个漏洞修复
+2026-03-18 - Phase 13 域名上线，修复 MX/DMARC/SPF
+2026-03-18 - Phase 8c UTM + PostHog Dashboard
+2026-03-18 - Phase 14 SEO（sitemap + JSON-LD）
+2026-03-19 - 从 kind 迁移到 k3s（Traefik Ingress）
+2026-03-19 - k3s 权限配置（docker 组访问 containerd socket）
 ```
